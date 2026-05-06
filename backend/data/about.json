@@ -1,0 +1,41 @@
+{
+  "story": {
+    "title": "Our Story",
+    "paragraphs": [
+      "Founded in 2017, Madhushud Oil Shop has been committed to providing pure, high-quality cooking oils that promote health and taste. What began as a small family-run oil mill has grown into a trusted name across the region.",
+      "We specialize in cold-pressed and refined oils, ensuring freshness, nutrition, and authenticity in every drop. With modern extraction techniques and traditional values, Madhushud Oil Shop proudly serves thousands of households and businesses."
+    ],
+    "image": "https://storage.googleapis.com/a1aa/image/89c8158a-198b-4029-ae15-6facb120ee6c.jpg"
+  },
+  "stats": [
+    { "icon": "fas fa-industry", "number": "500+", "label": "Liters Produced Daily" },
+    { "icon": "fas fa-users", "number": "20k+", "label": "Happy Customers", "highlight": true },
+    { "icon": "fas fa-seedling", "number": "15+", "label": "Natural Oil Variants" },
+    { "icon": "fas fa-truck", "number": "50+", "label": "Delivery Partners" }
+  ],
+  "team": [
+    {
+      "name": "Rajesh Kumar",
+      "role": "Founder & CEO",
+      "image": "https://storage.googleapis.com/a1aa/image/3372973f-86ca-4c68-7af0-90494c861cb2.jpg",
+      "socials": [{ "icon": "fab fa-twitter", "link": "#" }, { "icon": "fab fa-linkedin-in", "link": "#" }]
+    },
+    {
+      "name": "Anita Sharma",
+      "role": "Managing Director",
+      "image": "https://storage.googleapis.com/a1aa/image/0c86cd88-c006-4ac3-74b1-de4e46a2825c.jpg",
+      "socials": [{ "icon": "fab fa-twitter", "link": "#" }, { "icon": "fab fa-linkedin-in", "link": "#" }]
+    },
+    {
+      "name": "Vikram Patel",
+      "role": "Head of Production",
+      "image": "https://storage.googleapis.com/a1aa/image/09f530c9-0b71-4b11-c8a9-6e2e7a6c7930.jpg",
+      "socials": [{ "icon": "fab fa-twitter", "link": "#" }, { "icon": "fab fa-linkedin-in", "link": "#" }]
+    }
+  ],
+  "features": [
+    { "icon": "fas fa-truck", "title": "FREE & FAST DELIVERY", "desc": "On all bulk & retail orders" },
+    { "icon": "fas fa-headset", "title": "CUSTOMER SUPPORT", "desc": "Friendly 24/7 customer assistance" },
+    { "icon": "fas fa-seedling", "title": "PURE & NATURAL", "desc": "100% chemical-free cold-pressed oils" }
+  ]
+}

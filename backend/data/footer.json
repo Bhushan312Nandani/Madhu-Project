@@ -1,0 +1,36 @@
+{
+  "brand": {
+    "title": "MadhuShud",
+    "subscribeTitle": "Subscribe",
+    "subscribeText": "Get 10% off your first order",
+    "formPlaceholder": "Enter your email"
+  },
+  "support": {
+    "title": "Support",
+    "address": ["111 Bijoy sarani, Dhaka,", "DH 1515, Bangladesh."],
+    "email": "madhuoil@gmail.com",
+    "phone": "+88015-38888-9999"
+  },
+  "account": {
+    "title": "Account",
+    "links": ["My Account", "Login / Register", "Cart", "Wishlist", "Shop"]
+  },
+  "quickLinks": {
+    "title": "Quick Links",
+    "links": ["Privacy Policy", "Terms Of Use", "FAQ", "Contact"]
+  },
+  "download": {
+    "title": "Download App",
+    "desc": "Save $3 with App New User Only",
+    "qr": "https://dummyimage.com/60x60/000/fff.png&text=QR",
+    "google": "https://dummyimage.com/100x35/000/fff.png&text=GooglePlay",
+    "apple": "https://dummyimage.com/100x35/000/fff.png&text=AppStore"
+  },
+  "social": [
+    { "platform": "Facebook", "icon": "fab fa-facebook-f", "link": "#" },
+    { "platform": "Twitter", "icon": "fab fa-twitter", "link": "#" },
+    { "platform": "Instagram", "icon": "fab fa-instagram", "link": "#" },
+    { "platform": "LinkedIn", "icon": "fab fa-linkedin-in", "link": "#" }
+  ],
+  "copyright": "© Copyright MadhuShud Oil Project 2025. All rights reserved."
+}

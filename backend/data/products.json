@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "discount": "-10%",
+    "image": "https://pngimg.com/d/olive_oil_PNG33.png",
+    "name": "Premium Olive Oil",
+    "newPrice": 28,
+    "oldPrice": 32,
+    "rating": 4.5,
+    "reviews": 200
+  },{
+    "id": 1,
+    "discount": "-10%",
+    "image": "https://pngimg.com/d/olive_oil_PNG33.png",
+    "name": "Premium Olive Oil",
+    "newPrice": 28,
+    "oldPrice": 32,
+    "rating": 4.5,
+    "reviews": 200
+  },
+  {
+    "id": 1,
+    "discount": "-10%",
+    "image": "https://pngimg.com/d/olive_oil_PNG33.png",
+    "name": "Premium Olive Oil",
+    "newPrice": 28,
+    "oldPrice": 32,
+    "rating": 4.5,
+    "reviews": 200
+  }
+]

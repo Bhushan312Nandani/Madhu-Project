@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Premium Olive Oil",
+    "image": "https://pngimg.com/d/olive_oil_PNG33.png",
+    "newPrice": "$28",
+    "oldPrice": "$32",
+    "discount": "-10%",
+    "rating": 4.5,
+    "reviews": 200
+  },
+  {
+    "name": "Refined Sunflower Oil",
+    "image": "https://pngimg.com/d/sunflower_oil_PNG24.png",
+    "newPrice": "$14",
+    "oldPrice": "$17",
+    "discount": "-18%",
+    "rating": 4.5,
+    "reviews": 200
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "category": "MadhuShud Oil Special",
+  "title": "Enhance Your Oil Experience",
+  "countdown": {
+    "days": 0,
+    "hours": 20,
+    "minutes": 2,
+    "seconds": 0
+  },
+  "images": [
+    "https://cdn.pixabay.com/photo/2017/08/07/16/32/oil-2608361_1280.jpg",
+    "https://pngimg.com/d/olive_oil_PNG33.png",
+    "https://pngimg.com/d/sunflower_oil_PNG24.png"
+  ],
+  "link": "https://example.com/shop"
+}

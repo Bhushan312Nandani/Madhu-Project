@@ -1,0 +1,70 @@
+[
+  {
+    "id": 1,
+    "name": "Premium Olive Oil",
+    "images": [
+      "https://pngimg.com/d/olive_oil_PNG33.png",
+      "https://pngimg.com/d/sunflower_oil_PNG24.png",
+            "https://pngimg.com/d/olive_oil_PNG33.png",
+      "https://pngimg.com/d/sunflower_oil_PNG24.png"
+    ],
+    "price": 28,
+    "oldPrice": 32,
+    "rating": 4.5,
+    "reviews": 200,
+    "stock": "In Stock",
+    "description": "Cold-pressed and 100% pure olive oil. Perfect for cooking, frying, and health benefits.",
+    "sizes": ["1L", "2L", "5L", "15L"]
+  },
+  {
+    "id": 2,
+    "name": "Sunflower Oil",
+    "images": [
+      "https://pngimg.com/d/sunflower_oil_PNG24.png",
+      "https://pngimg.com/d/sunflower_oil_PNG24.png",
+      "https://pngimg.com/d/sunflower_oil_PNG24.png",
+      "https://pngimg.com/d/sunflower_oil_PNG24.png"
+    ],
+    "price": 14,
+    "oldPrice": 17,
+    "rating": 4.5,
+    "reviews": 150,
+    "stock": "In Stock",
+    "description": "Refined sunflower oil, healthy and ideal for all types of cooking.",
+    "sizes": ["1L", "2L", "5L", "15L"]
+  },
+  {
+    "id": 3,
+    "name": "Sunflower Oil",
+    "images": [
+      "https://pngimg.com/d/sunflower_oil_PNG24.png",
+      "https://pngimg.com/d/sunflower_oil_PNG24.png",
+      "https://pngimg.com/d/sunflower_oil_PNG24.png",
+      "https://pngimg.com/d/sunflower_oil_PNG24.png"
+    ],
+    "price": 14,
+    "oldPrice": 17,
+    "rating": 4.5,
+    "reviews": 150,
+    "stock": "In Stock",
+    "description": "Refined sunflower oil, healthy and ideal for all types of cooking.",
+    "sizes": ["1L", "2L", "5L", "15L"]
+  },
+  {
+    "id": 4,
+    "name": "Sunflower Oil",
+    "images": [
+      "https://pngimg.com/d/sunflower_oil_PNG24.png",
+      "https://pngimg.com/d/sunflower_oil_PNG24.png",
+      "https://pngimg.com/d/sunflower_oil_PNG24.png",
+      "https://pngimg.com/d/sunflower_oil_PNG24.png"
+    ],
+    "price": 14,
+    "oldPrice": 17,
+    "rating": 4.5,
+    "reviews": 150,
+    "stock": "In Stock",
+    "description": "Refined sunflower oil, healthy and ideal for all types of cooking.",
+    "sizes": ["1L", "2L", "5L", "15L"]
+  }
+]

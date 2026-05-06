@@ -1,0 +1,46 @@
+{
+  "1756591746566": [
+    {
+      "id": 1693569871234,
+      "productId": "101",
+      "name": "Mustard Oil",
+      "image": "/img/mustard.jpg",
+      "price": 220
+    }
+  ],
+  "1756672663167": [],
+  "guest": [
+    {
+      "id": 1757009748607,
+      "productId": "4",
+      "name": "Sunflower Oil",
+      "price": 14,
+      "image": "https://pngimg.com/d/sunflower_oil_PNG24.png",
+      "addedAt": "2025-09-04T18:15:48.608Z"
+    },
+    {
+      "id": 1757009753850,
+      "productId": "3",
+      "name": "Sunflower Oil",
+      "price": 14,
+      "image": "https://pngimg.com/d/sunflower_oil_PNG24.png",
+      "addedAt": "2025-09-04T18:15:53.850Z"
+    },
+    {
+      "id": 1757009761714,
+      "productId": "2",
+      "name": "Sunflower Oil",
+      "price": 14,
+      "image": "https://pngimg.com/d/sunflower_oil_PNG24.png",
+      "addedAt": "2025-09-04T18:16:01.714Z"
+    },
+    {
+      "id": 1757009769224,
+      "productId": "1",
+      "name": "Premium Olive Oil",
+      "price": 28,
+      "image": "https://pngimg.com/d/olive_oil_PNG33.png",
+      "addedAt": "2025-09-04T18:16:09.224Z"
+    }
+  ]
+}

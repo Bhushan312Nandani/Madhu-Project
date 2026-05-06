@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "mainText": "Freshly Extracted Oils\nwith Traditional Machines",
+    "seriesText": "100% Pure & Natural",
+    "link": "#",
+    "buttonText": "Shop Now",
+    "image": "https://pngimg.com/d/sunflower_oil_PNG24.png",
+    "logo": "https://cdn-icons-png.flaticon.com/512/990/990420.png"
+  },
+  {
+    "id": 2,
+    "mainText": "Cold Pressed Oils\nFor Healthy Living",
+    "seriesText": "100% Organic",
+    "link": "#",
+    "buttonText": "Explore Now",
+    "image": "https://cdn.pixabay.com/photo/2016/11/18/14/26/oil-1838586_1280.jpg",
+    "logo": "https://cdn-icons-png.flaticon.com/512/990/990420.png"
+  }
+]
