@@ -1,0 +1,604 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: #000;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin:auto;
+  padding: 0 15px 40px;
+  margin: top 150px;
+}
+
+.none {
+  margin: 0;
+  padding: 0;
+}
+/* Top black bar */
+.top-bar {
+  background-color: #000;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 10px;
+  position: relative;
+}
+.top-bar .container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.top-bar .left-text {
+  font-weight: 400;
+}
+.top-bar .left-text strong {
+  font-weight: 600;
+}
+.top-bar .right-text {
+  font-weight: 400;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+.top-bar .right-text::after {
+  content: "\f107";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-left: 4px;
+  font-size: 10px;
+}
+
+/* Header main */
+header {
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  padding: 20px 10px 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+}
+.logo {
+  font-weight: 700;
+  font-size: 18px;
+  user-select: none;
+  color: #d33c3c; /* highlight brand color */
+}
+nav {
+  display: flex;
+  gap: 24px;
+  font-weight: 400;
+  font-size: 14px;
+}
+nav a {
+  color: #000;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+}
+nav a.active {
+  font-weight: 600;
+  border-bottom: 1px solid #000;
+}
+
+/* Search input */
+.search-container {
+  position: relative;
+  margin-left: 24px;
+}
+.search-container input[type="text"] {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  padding: 8px 32px 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  outline: none;
+  width: 180px;
+}
+.search-container .fa-search {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 14px;
+}
+
+/* Icons container */
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: 24px;
+}
+.icons .icon {
+  position: relative;
+  cursor: pointer;
+  color: #000;
+  font-size: 18px;
+}
+.icons .icon.heart:hover,
+.icons .icon.cart:hover,
+.icons .icon.user:hover {
+  color: #d33c3c;
+}
+.icons .cart .badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #d33c3c;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 50%;
+  padding: 2px 5px;
+  line-height: 1;
+}
+
+/* User icon with dropdown */
+.user-dropdown {
+  position: relative;
+}
+.user-dropdown .dropdown-menu {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%);
+  border-radius: 6px;
+  width: 160px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  display: none;
+  flex-direction: column;
+  padding: 8px 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+.user-dropdown .dropdown-menu.show {
+  display: flex;
+}
+.user-dropdown .dropdown-menu a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  color: #fff;
+  font-weight: 400;
+}
+.user-dropdown .dropdown-menu a:hover {
+  background: rgba(255 255 255 / 0.15);
+}
+.user-dropdown .dropdown-menu a .fa {
+  font-size: 14px;
+  width: 16px;
+  text-align: center;
+}
+
+/* Main content container */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  padding: 0 10px;
+}
+
+/* Left sidebar (Oil Categories) */
+.sidebar {
+  min-width: 160px;
+  border-right: 1px solid #eee;
+  padding-right: 20px;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 400;
+}
+.sidebar ul li {
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.sidebar ul li span {
+  user-select: none;
+}
+.sidebar ul li .fa-chevron-right {
+  font-size: 10px;
+  color: #000;
+}
+
+/* Banner area (Oil Shop Hero) */
+.banner {
+  flex: 1;
+  position: relative;
+  background: #000;
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 24px;
+  color: #fff;
+}
+.banner > div {
+  max-width: 50%;
+}
+.banner .oil-logo {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 6px;
+}
+.banner .series-text {
+  font-size: 10px;
+  font-weight: 400;
+  margin-bottom: 12px;
+  opacity: 0.8;
+}
+.banner .main-text {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.banner .shop-now {
+  font-size: 12px;
+  font-weight: 400;
+  border-bottom: 1px solid #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.banner .shop-now:hover {
+  opacity: 0.8;
+}
+.banner .shop-now .fa-arrow-right {
+  font-size: 12px;
+}
+.banner img.oil-bottles {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 180px;
+  object-fit: contain;
+}
+
+/* Pagination dots */
+.pagination-dots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+.pagination-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.pagination-dots .dot.active {
+  background: #d33c3c;
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  header {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-bottom: none;
+  }
+  nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 16px;
+    font-size: 12px;
+  }
+  .search-container {
+    order: 2;
+    margin-left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .search-container input[type="text"] {
+    width: 100%;
+    max-width: 300px;
+  }
+  .icons {
+    order: 1;
+    margin-left: 0;
+    gap: 12px;
+  }
+  .main-content {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 10px 20px 10px;
+  }
+  .sidebar {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+    min-width: auto;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+    padding-right: 0;
+    padding-bottom: 12px;
+  }
+  .sidebar li {
+    flex-direction: row;
+    flex-wrap: wrap; 
+    display: flex;
+  }
+
+
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  
+    display: flex;           /* Row-wise layout */
+    flex-wrap: wrap;         /* Next line pe chale jaye agar space kam ho */
+    gap: 0px;               /* Items ke beech space */
+  }
+  
+  .sidebar li {
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0px;                /* text aur arrow ke beech gap */
+    transition: 0.3s;
+  }
+  
+  .sidebar li:hover {
+    background: #b3ac98;     /* hover effect */
+    border-color: #e0a800;
+  }
+  
+
+      .flash-sales-header
+{
+  display: flex;
+  flex-direction: column;
+  margin-top: 0px;
+  margin-left: 0px;
+}
+  .banner {
+    min-height: 220px;
+    padding-left: 16px;
+  }
+  .banner > div {
+    max-width: 100%;
+  }
+  .banner img.oil-bottles {
+    height: 140px;
+    bottom: 8px;
+  }
+}  
+
+
+
+
+
+/* MadhuShud Footer */
+.madhu-footer-container {
+  /* max-width: 1200px;
+  margin: 4 auto; */
+  padding: 40px 20px 20px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.madhu-footer-block {
+  margin-bottom: 30px;
+}
+
+.madhu-footer-brand {
+  flex: 1 1 220px;
+  max-width: 220px;
+}
+.madhu-footer-brand h2 {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0 0 10px 0;
+}
+.madhu-footer-brand h3 {
+  font-weight: 700;
+  font-size: 14px;
+  margin: 0 0 10px 0;
+}
+.madhu-footer-brand p {
+  font-weight: 400;
+  font-size: 13px;
+  margin: 0 0 15px 0;
+}
+
+/* Email Subscribe */
+.madhu-footer-email {
+  display: flex;
+  max-width: 220px;
+}
+.madhu-footer-email input[type="email"] {
+  flex-grow: 1;
+  background: transparent;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 13px;
+  padding: 8px 10px;
+  outline: none;
+}
+.madhu-footer-email input::placeholder {
+  color: #777;
+}
+.madhu-footer-email button {
+  background: transparent;
+  border: none;
+  border-left: 1px solid #555;
+  color: #fff;
+  padding: 0 12px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+/* Support */
+.madhu-footer-support {
+  flex: 1 1 180px;
+  max-width: 180px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.madhu-footer-support p { margin: 0 0 8px 0; }
+
+/* Links */
+.madhu-footer-links,
+.madhu-footer-account {
+  flex: 1 1 120px;
+  max-width: 120px;
+}
+.madhu-footer-block h4 {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+.madhu-footer-block ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.madhu-footer-block ul li {
+  margin-bottom: 8px;
+}
+.madhu-footer-block ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+.madhu-footer-block ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Download & Social */
+.madhu-footer-download {
+  flex: 1 1 180px;
+  max-width: 180px;
+  font-size: 13px;
+}
+.madhu-footer-download p {
+  margin: 0 0 8px 0;
+}
+.madhu-footer-qr {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 8px;
+}
+.madhu-footer-badges {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.madhu-footer-badges img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+.madhu-footer-social {
+  display: flex;
+  gap: 15px;
+}
+.madhu-footer-social a {
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+/* Bottom */
+.madhu-footer-bottom {
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  padding: 15px 10px 30px 10px;
+  font-weight: 400;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .madhu-footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .madhu-footer-block {
+    max-width: 100%;
+    flex: 1 1 100%;
+    margin-bottom: 25px;
+  }
+  .madhu-footer-email {
+    max-width: 100%;
+  }
+  .madhu-footer-badges {
+    flex-direction: row;
+    gap: 10px;
+  }
+}
+
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 10px; font-weight: 400; color: #000;
+      margin-top: 20px; margin-bottom: 40px; letter-spacing: 0.02em;
+    }
+    .breadcrumb strong { font-weight: 600; }
+    .breadcrumb span { margin: 0 6px; }
+
+
+        /* Features */
+        .features-section {
+
+          display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; margin-bottom: 40px;
+          margin-top: 20px;
+        }
+        .feature { flex: 1 1 180px; max-width: 180px; text-align: center; }
+        .feature-icon {
+          width: 40px; height: 40px; margin: 0 auto 12px;
+          background: #000; border-radius: 50%;
+          display: flex; align-items: center; justify-content: center;
+          color: #fff; font-size: 18px;
+        }
+        .feature-title { font-weight: 600; font-size: 12px; margin-bottom: 4px; }
+        .feature-desc { font-weight: 400; font-size: 8px; line-height: 1.3; color: #000; }

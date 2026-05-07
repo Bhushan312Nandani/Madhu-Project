@@ -1,0 +1,83 @@
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 10px; font-weight: 400; color: #000;
+      margin-top: 20px; margin-bottom: 40px; letter-spacing: 0.02em;
+    }
+    .breadcrumb strong { font-weight: 600; }
+    .breadcrumb span { margin: 0 6px; }
+
+    /* Story */
+    .story-section {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 40px; margin-bottom: 60px;
+    }
+    .story-text { flex: 1 1 400px; max-width: 600px; }
+    .story-text h1 { font-weight: 600; font-size: 28px; margin: 0 0 20px 0; }
+    .story-text p {
+      font-weight: 400; font-size: 12px; line-height: 1.5;
+      margin: 0 0 12px 0; color: #000;
+    }
+    .story-image { flex: 1 1 300px; max-width: 400px; }
+    .story-image img { width: 100%; height: auto; display: block; }
+
+    /* Stats */
+    .stats-section {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 20px; margin-bottom: 60px;
+    }
+    .stat-card {
+      flex: 1 1 120px; max-width: 140px;
+      border: 1px solid #ddd; border-radius: 4px;
+      padding: 20px 10px 15px; text-align: center; background: #fff;
+    }
+    .stat-card.highlight { background: #e04c4c; border-color: #e04c4c; color: #fff; }
+    .stat-icon {
+      width: 32px; height: 32px; margin: 0 auto 10px;
+      background: #000; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 16px;
+    }
+    .stat-card.highlight .stat-icon { background: #fff; color: #e04c4c; }
+    .stat-number { font-weight: 600; font-size: 18px; margin-bottom: 6px; }
+    .stat-label { font-weight: 400; font-size: 10px; line-height: 1.3; }
+
+    /* Team */
+    .team-section {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-bottom: 40px;
+    }
+    .team-member { flex: 1 1 200px; max-width: 220px; text-align: center; }
+    .team-member img { width: 100%; margin-bottom: 12px; border-radius: 8px; }
+    .team-name { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+    .team-role { font-weight: 400; font-size: 10px; margin-bottom: 8px; }
+    .team-socials a { margin-right: 8px; color: #000; font-size: 12px; }
+
+    /* Pagination */
+    .pagination-dots { text-align: center; margin-bottom: 60px; }
+    .pagination-dots i { font-size: 8px; color: #b3b3b3; margin: 0 4px; }
+    .pagination-dots i.active { color: #e04c4c; }
+
+    /* Features */
+    .features-section {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; margin-bottom: 40px;
+    }
+    .feature { flex: 1 1 180px; max-width: 180px; text-align: center; }
+    .feature-icon {
+      width: 40px; height: 40px; margin: 0 auto 12px;
+      background: #000; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 18px;
+    }
+    .feature-title { font-weight: 600; font-size: 12px; margin-bottom: 4px; }
+    .feature-desc { font-weight: 400; font-size: 8px; line-height: 1.3; color: #000; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .story-section { flex-direction: column; gap: 30px; }
+      .story-text, .story-image { max-width: 100%; flex: 1 1 100%; }
+      .stats-section { justify-content: space-around; }
+    }
+    @media (max-width: 480px) {
+      .stat-card { max-width: 100px; padding: 15px 8px 12px; }
+      .stat-number { font-size: 16px; }
+      .team-member { max-width: 140px; }
+      .team-name { font-size: 12px; }
+    }
