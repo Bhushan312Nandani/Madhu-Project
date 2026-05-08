@@ -2,14 +2,14 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
+    const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27018/madhuoil";
+    const conn = await mongoose.connect(mongoURI);
+    console.log(`✅ MongoDB Connected: ${conn.connection.host}:${conn.connection.port}/${conn.connection.name}`);
+    return conn;
   } catch (error) {
-    console.error(`❌ Error: ${error.message}`);
-    process.exit(1);
+    console.error(`❌ MongoDB Connection Error: ${error.message}`);
+    console.log("⚠️  Running without MongoDB - using JSON file storage fallback");
+    return null;
   }
 };
 

@@ -26,5 +26,54 @@
     "email": "bhushan@gmail.com",
     "phone": "03332529504",
     "password": "12345678900"
+  },
+  {
+    "id": 1778184861678,
+    "name": "BhushanKumar Achariya",
+    "email": "bhushanpachariya@gmail.com",
+    "phone": "456789",
+    "password": "112233"
+  },
+  {
+    "id": 1778184891305,
+    "name": "BhushanKumar Achariya",
+    "email": "bhushanpachariya223465@gmail.com",
+    "phone": "456789",
+    "password": "112233"
+  },
+  {
+    "id": 1778218295782,
+    "name": "hello",
+    "email": "hello@gmail.com",
+    "phone": "123456789",
+    "password": "12345678900"
+  },
+  {
+    "id": 1778218309258,
+    "name": "hello",
+    "email": "hello12345678900@gmail.com",
+    "phone": "123456789",
+    "password": "12345678900"
+  },
+  {
+    "id": 1778218320479,
+    "name": "hello",
+    "email": "hello1234@gmail.com",
+    "phone": "123456789",
+    "password": "12345678900"
+  },
+  {
+    "id": 1778218329160,
+    "name": "hello",
+    "email": "hello12346@gmail.com",
+    "phone": "123456789",
+    "password": "12345678900"
+  },
+  {
+    "id": 1778218346038,
+    "name": "name:  hello",
+    "email": "hello123465@gmail.com",
+    "phone": "123456789",
+    "password": "12345678900"
   }
 ]

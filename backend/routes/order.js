@@ -23,17 +23,17 @@ const writeOrders = (orders) => {
   fs.writeFileSync(ordersFile, JSON.stringify(orders, null, 2));
 };
 
-// 📌 GET all orders
+// GET all orders
 router.get("/", (req, res) => {
   const orders = readOrders();
   res.json(orders);
 });
 
-// 📌 POST new order
+// POST new order
 router.post("/", (req, res) => {
   const { billing, items, paymentMethod, total } = req.body;
 
-  // ✅ Basic Validation
+  // Basic Validation
   if (
     !billing ||
     !billing.firstName ||
@@ -62,17 +62,13 @@ router.post("/", (req, res) => {
   orders.push(newOrder);
   writeOrders(orders);
 
-  console.log("✅ New Order Saved:", newOrder);
+  console.log("New Order Saved:", newOrder.id);
 
   res.status(201).json({
     message: "Order placed successfully!",
     orderId: newOrder.id,
     order: newOrder,
   });
-});
-
-router.get("/", (req, res) => {
-  res.send("Orders route working");
 });
 
 export default router;   // default export

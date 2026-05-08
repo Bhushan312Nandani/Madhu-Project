@@ -1,3 +1,4 @@
+// routes/flashSales.js
 import express from "express";
 import fs from "fs";
 import path from "path";
@@ -7,15 +8,17 @@ const router = express.Router();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const flashFile = path.join(__dirname, "../data/flashSales.json");
+const timerFile = path.join(__dirname, "../data/flashTimer.json");
+
+function readJSON(file) {
+  if (!fs.existsSync(file)) return [];
+  try { return JSON.parse(fs.readFileSync(file, "utf-8")); } catch { return []; }
+}
+
+// GET flash sales products
 router.get("/", (req, res) => {
-  try {
-    const data = fs.readFileSync(path.join(__dirname, "../data/flashSales.json"), "utf-8");
-    const oils = JSON.parse(data);
-    res.json(oils);
-  } catch (err) {
-    console.error(err); // log the actual error for debugging
-    res.status(500).json({ error: "Internal Server Error" });
-  }
+  res.json(readJSON(flashFile));
 });
 
 export default router;

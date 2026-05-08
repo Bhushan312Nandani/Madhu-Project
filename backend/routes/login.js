@@ -3,6 +3,7 @@ import express from "express";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import bcryptjs from "bcryptjs";
 
 const router = express.Router();
 const __filename = fileURLToPath(import.meta.url);
@@ -37,6 +38,7 @@ router.post("/", (req, res) => {
     id: String(user.id),
     name: user.name,
     email: user.email,
+    role: user.role || "user",
     loginTime: new Date().toISOString(),
     location: req.headers["x-forwarded-for"] || req.socket.remoteAddress || "",
     userAgent: req.headers["user-agent"] || ""
@@ -49,6 +51,27 @@ router.post("/", (req, res) => {
   }
 
   return res.json({ message: "Login successful", user: sessionData });
+});
+
+// Admin login (hardcoded credentials from env)
+router.post("/admin", (req, res) => {
+  const { email, password } = req.body;
+  const adminEmail = process.env.ADMIN_EMAIL || "admin@madhuoil.com";
+  const adminPassword = process.env.ADMIN_PASSWORD || "admin123";
+
+  if (email === adminEmail && password === adminPassword) {
+    return res.json({
+      message: "Admin login successful",
+      user: {
+        id: "admin-001",
+        name: "Admin",
+        email: adminEmail,
+        role: "admin",
+        loginTime: new Date().toISOString()
+      }
+    });
+  }
+  return res.status(401).json({ message: "Invalid admin credentials" });
 });
 
 export default router;

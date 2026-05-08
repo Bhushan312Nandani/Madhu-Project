@@ -308,32 +308,5 @@
     "total": null,
     "createdAt": "2025-09-04T18:22:15.166Z",
     "status": "pending"
-  },
-  {
-    "id": 11,
-    "billing": {
-      "firstName": "something",
-      "companyName": "something",
-      "streetAddress": "nothingq",
-      "aptFloor": "nothing",
-      "city": "nothing",
-      "phone": "21231231232",
-      "email": "something@gmail.com",
-      "saveInfo": true
-    },
-    "items": [
-      {
-        "productId": 4,
-        "name": "Sunflower Oil",
-        "image": "https://pngimg.com/d/sunflower_oil_PNG24.png",
-        "size": "15L",
-        "quantity": 1,
-        "totalPrice": 210
-      }
-    ],
-    "paymentMethod": "bank",
-    "total": 210,
-    "createdAt": "2025-09-04T18:45:36.744Z",
-    "status": "pending"
   }
 ]

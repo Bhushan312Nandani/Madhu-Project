@@ -1,0 +1,148 @@
+/* =====================================================================
+   MODERN UI/UX ENHANCEMENTS
+   ===================================================================== */
+:root {
+  --primary-color: #d33c3c;
+  --bg-color: #fafbfd;
+  --text-color: #1f2937;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --border-color: #f3f4f6;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+/* Sticky Glassmorphic Header */
+header {
+  position: sticky !important;
+  top: 0;
+  z-index: 1000;
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.3) !important;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 30px !important;
+  transition: var(--transition);
+  border-radius: 0 0 16px 16px;
+}
+
+/* Navigation Links */
+nav a {
+  position: relative;
+  transition: var(--transition);
+  font-weight: 500 !important;
+  padding-bottom: 4px;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--primary-color);
+  transition: var(--transition);
+  border-radius: 2px;
+}
+nav a:hover::after, nav a.active::after {
+  width: 100%;
+}
+nav a:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Beautiful Search Input */
+.search-container input {
+  transition: var(--transition) !important;
+  border: 1px solid var(--border-color) !important;
+  background: #f9fafb !important;
+  border-radius: 20px !important;
+  padding: 8px 16px !important;
+}
+.search-container input:focus {
+  background: #fff !important;
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 4px rgba(211, 60, 60, 0.1) !important;
+  outline: none !important;
+}
+
+/* Icons Animation */
+.icons .icon {
+  transition: var(--transition) !important;
+  cursor: pointer;
+}
+.icons .icon:hover {
+  transform: translateY(-3px) scale(1.05);
+  color: var(--primary-color);
+}
+
+/* Badges */
+.badge {
+  background: var(--primary-color) !important;
+  box-shadow: 0 2px 6px rgba(211,60,60,0.4);
+  font-weight: bold;
+}
+
+/* Card Hover Effects */
+.card, .p-card, .product-card, .flash-card {
+  transition: var(--transition) !important;
+  border: 1px solid var(--border-color) !important;
+  background: #ffffff !important;
+  box-shadow: var(--shadow-sm) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+.card:hover, .p-card:hover, .product-card:hover, .flash-card:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: var(--shadow-hover) !important;
+  border-color: rgba(211, 60, 60, 0.15) !important;
+}
+
+/* Card Images */
+.card img, .p-card img, .product-card img, .flash-card img {
+  transition: transform 0.5s ease;
+}
+.card:hover img, .p-card:hover img, .product-card:hover img, .flash-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Buttons */
+button {
+  transition: var(--transition) !important;
+  cursor: pointer;
+}
+button:active {
+  transform: scale(0.95) !important;
+}
+.btn-add-cart, .btn-add {
+  background: #111827 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+  border-radius: 0 0 12px 12px !important;
+  padding: 12px 0 !important;
+}
+.btn-add-cart:hover, .btn-add:hover {
+  background: var(--primary-color) !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
+
+/* Banners & Highlights */
+.top-bar {
+  background: linear-gradient(90deg, #000 0%, #1a1a1a 100%) !important;
+  letter-spacing: 0.5px;
+}
