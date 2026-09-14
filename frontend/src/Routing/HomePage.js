@@ -9,6 +9,7 @@ import FlashCard from "../components/annouce/FlashCard";
 import MusicBanner from "../components/annouce/MusicBanner";
 import SearchByCategories from "../components/annouce/SearchByCategories"
 import ExploreProducts from"../components/annouce/ExploreProducts";
+import Testimonials from "../components/home/Testimonials";
 import Footer from "../components/utilities/Footer"
 
 function HomePage() {
@@ -25,6 +26,7 @@ function HomePage() {
       <MusicBanner />
       <ExploreProducts  />
       <Arrival  />
+      <Testimonials />
       <Footer/>
     </>
   );

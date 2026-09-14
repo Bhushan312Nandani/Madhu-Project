@@ -1,0 +1,64 @@
+version: '3.9'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/madhuoil
+      - PORT=5000
+      - JWT_ACCESS_SECRET=madhuoil_access_jwt_secret_2024_v2_xK9_mP_qL8nR
+      - JWT_REFRESH_SECRET=madhuoil_refresh_jwt_secret_2024_v2_zN4_wE6jH2vY
+      - JWT_ACCESS_EXPIRES=15m
+      - JWT_REFRESH_EXPIRES=7d
+      - ADMIN_EMAIL=admin@madhuoil.com
+      - ADMIN_PASSWORD=Admin@MadhuOil2024!
+      - ADMIN_JWT_SECRET=madhuoil_admin_super_secret_2024_v2_bX7_tQ3pW9sM
+      - NODE_ENV=production
+      - ALLOWED_ORIGINS=http://localhost:3000,http://frontend:3000
+      - CACHE_TTL=300
+      - BCRYPT_ROUNDS=12
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000/api
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+  mongodb:
+    image: mongo:7.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    command: ["mongod", "--quiet"]
+
+volumes:
+  mongodb_data:
+    driver: local
+  mongodb_config:
+    driver: local

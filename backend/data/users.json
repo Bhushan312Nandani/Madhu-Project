@@ -1,79 +1,16 @@
 [
   {
-    "id": 1756587464792,
-    "name": "dbbdasd",
-    "email": "sdasdas@gmail.com",
-    "phone": "034234234",
+    "id": 1778470517113,
+    "name": "Bhushan",
+    "email": "bhushu@gmail.com",
+    "phone": "12345678900",
     "password": "12345678900"
   },
   {
-    "id": 1756587500584,
-    "name": "Bhh",
-    "email": "gmail@gmail.com",
-    "phone": "323123",
-    "password": "1234"
-  },
-  {
-    "id": 1756591746566,
-    "name": "something",
-    "email": "something@gmail.com",
-    "phone": "23131",
-    "password": "12345678900"
-  },
-  {
-    "id": 1756672663167,
-    "name": "bhushan kumar",
-    "email": "bhushan@gmail.com",
-    "phone": "03332529504",
-    "password": "12345678900"
-  },
-  {
-    "id": 1778184861678,
-    "name": "BhushanKumar Achariya",
-    "email": "bhushanpachariya@gmail.com",
-    "phone": "456789",
-    "password": "112233"
-  },
-  {
-    "id": 1778184891305,
-    "name": "BhushanKumar Achariya",
-    "email": "bhushanpachariya223465@gmail.com",
-    "phone": "456789",
-    "password": "112233"
-  },
-  {
-    "id": 1778218295782,
-    "name": "hello",
-    "email": "hello@gmail.com",
-    "phone": "123456789",
-    "password": "12345678900"
-  },
-  {
-    "id": 1778218309258,
-    "name": "hello",
-    "email": "hello12345678900@gmail.com",
-    "phone": "123456789",
-    "password": "12345678900"
-  },
-  {
-    "id": 1778218320479,
-    "name": "hello",
-    "email": "hello1234@gmail.com",
-    "phone": "123456789",
-    "password": "12345678900"
-  },
-  {
-    "id": 1778218329160,
-    "name": "hello",
-    "email": "hello12346@gmail.com",
-    "phone": "123456789",
-    "password": "12345678900"
-  },
-  {
-    "id": 1778218346038,
-    "name": "name:  hello",
-    "email": "hello123465@gmail.com",
-    "phone": "123456789",
+    "id": 1778470526102,
+    "name": "Bhushan",
+    "email": "bhushu123@gmail.com",
+    "phone": "12345678900",
     "password": "12345678900"
   }
 ]

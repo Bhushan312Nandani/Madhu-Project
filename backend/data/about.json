@@ -1,41 +1,73 @@
 {
   "story": {
-    "title": "Our Story",
+    "title": "Rooted in the Soil of Tharparkar",
+    "subtitle": "Artisanal Wooden Cold-Pressed Oils • Mithi, Sindh",
     "paragraphs": [
-      "Founded in 2017, Madhushud Oil Shop has been committed to providing pure, high-quality cooking oils that promote health and taste. What began as a small family-run oil mill has grown into a trusted name across the region.",
-      "We specialize in cold-pressed and refined oils, ensuring freshness, nutrition, and authenticity in every drop. With modern extraction techniques and traditional values, Madhushud Oil Shop proudly serves thousands of households and businesses."
+      "MadhuShud was founded in Mithi, Tharparkar with a singular, uncompromised calling: to bring back the purity of centuries-old Lakri Ghani (traditional wooden cold-press) extraction. In a market saturated with industrially refined, chemically bleached, and high-heat processed oils, we chose the slower, honorable path of zero-heat extraction.",
+      "Every harvest of mustard, sesame, coconut, and raw nuts is ethically procured from verified local farmers across Sindh and trusted regional growers. Crushed under slow-turning wooden pestles strictly below 45°C, every bottle retains its therapeutic nutrients, rich golden hue, and virgin aroma — exactly as nature intended."
     ],
-    "image": "https://storage.googleapis.com/a1aa/image/89c8158a-198b-4029-ae15-6facb120ee6c.jpg"
+    "image": "/images/products/sarson_mustard_oil.jpg",
+    "badge": "100% Wood-Pressed • Zero Chemicals"
   },
   "stats": [
-    { "icon": "fas fa-industry", "number": "500+", "label": "Liters Produced Daily" },
-    { "icon": "fas fa-users", "number": "20k+", "label": "Happy Customers", "highlight": true },
-    { "icon": "fas fa-seedling", "number": "15+", "label": "Natural Oil Variants" },
-    { "icon": "fas fa-truck", "number": "50+", "label": "Delivery Partners" }
+    { "icon": "fas fa-temperature-low", "number": "< 45°C", "label": "Zero-Heat Cold Press" },
+    { "icon": "fas fa-shield-alt", "number": "100%", "label": "Purity & Zero Additives", "highlight": true },
+    { "icon": "fas fa-seedling", "number": "28+", "label": "Single-Origin Oils" },
+    { "icon": "fas fa-globe", "number": "10+", "label": "Export Destinations" }
   ],
-  "team": [
+  "pillars": [
     {
-      "name": "Rajesh Kumar",
-      "role": "Founder & CEO",
-      "image": "https://storage.googleapis.com/a1aa/image/3372973f-86ca-4c68-7af0-90494c861cb2.jpg",
-      "socials": [{ "icon": "fab fa-twitter", "link": "#" }, { "icon": "fab fa-linkedin-in", "link": "#" }]
+      "icon": "fas fa-tree",
+      "title": "Traditional Lakri Ghani",
+      "desc": "Extracted using slow-moving wooden mortars (Kohlu). Low RPM ensures frictional heat never exceeds 45°C, preserving active vitamins and essential omegas."
     },
     {
-      "name": "Anita Sharma",
-      "role": "Managing Director",
-      "image": "https://storage.googleapis.com/a1aa/image/0c86cd88-c006-4ac3-74b1-de4e46a2825c.jpg",
-      "socials": [{ "icon": "fab fa-twitter", "link": "#" }, { "icon": "fab fa-linkedin-in", "link": "#" }]
+      "icon": "fas fa-hand-holding-water",
+      "title": "Zero Chemical Solvents",
+      "desc": "No hexane, no caustic soda bleaching, no deodorizing agents, and no synthetic mineral oil blending. Raw, pure, and 100% unadulterated."
     },
     {
-      "name": "Vikram Patel",
-      "role": "Head of Production",
-      "image": "https://storage.googleapis.com/a1aa/image/09f530c9-0b71-4b11-c8a9-6e2e7a6c7930.jpg",
-      "socials": [{ "icon": "fab fa-twitter", "link": "#" }, { "icon": "fab fa-linkedin-in", "link": "#" }]
+      "icon": "fas fa-seedling",
+      "title": "Single-Origin Seeds",
+      "desc": "Sourced directly from indigenous Sindh and regional harvests. Triple-cleaned by hand to eliminate impurities before slow pressing."
+    },
+    {
+      "icon": "fas fa-vial",
+      "title": "Multi-Point Lab Verified",
+      "desc": "Tested for zero argemone, low peroxide value, and optimal free fatty acid balance. Sealed in dark amber glass to prevent UV photodegradation."
     }
   ],
+  "process": [
+    {
+      "step": "01",
+      "title": "Seed Selection & Grading",
+      "desc": "Sun-dried indigenous seeds hand-cleaned and triple-sifted for peak oil maturity."
+    },
+    {
+      "step": "02",
+      "title": "Slow Wooden Pressing",
+      "desc": "Gentle mechanical crushing in natural timber mortars at low RPM without artificial heat."
+    },
+    {
+      "step": "03",
+      "title": "Cotton-Cloth Settling",
+      "desc": "Micro-filtered through multilayer organic cotton cloth. Pure gravity settling, zero bleaching."
+    },
+    {
+      "step": "04",
+      "title": "Amber Glass Packaging",
+      "desc": "Bottled in food-grade UV-protective amber containers with tamper-evident security seals."
+    }
+  ],
+  "guarantee": {
+    "quote": "We never bottle or sell what we wouldn't trust for our own children. Every drop of MadhuShud oil carries the honesty, soil, and heritage of Tharparkar.",
+    "signer": "The MadhuShud Artisanal Pressers",
+    "location": "Mithi, Tharparkar, Sindh",
+    "whatsapp": "+923332529504"
+  },
   "features": [
-    { "icon": "fas fa-truck", "title": "FREE & FAST DELIVERY", "desc": "On all bulk & retail orders" },
-    { "icon": "fas fa-headset", "title": "CUSTOMER SUPPORT", "desc": "Friendly 24/7 customer assistance" },
-    { "icon": "fas fa-seedling", "title": "PURE & NATURAL", "desc": "100% chemical-free cold-pressed oils" }
+    { "icon": "fas fa-shipping-fast", "title": "WORLDWIDE SHIPPING", "desc": "Carefully packed in shatter-proof cartons for domestic & export delivery" },
+    { "icon": "fas fa-phone-alt", "title": "DIRECT ARTISAN SUPPORT", "desc": "Direct WhatsApp assistance for bulk, export, & wholesale orders" },
+    { "icon": "fas fa-certificate", "title": "GUARANTEED PURITY", "desc": "100% unadulterated cold-pressed oils backed by batch testing" }
   ]
 }

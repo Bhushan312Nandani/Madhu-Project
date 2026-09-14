@@ -1,17 +1,17 @@
 {
-  "category": "MadhuShud Oil Special",
-  "title": "Enhance Your Oil Experience",
+  "category": "MadhuShud Harvest Special",
+  "title": "Enhance Your Wellness With Cold-Pressed Elixirs",
   "countdown": {
-    "days": 0,
-    "hours": 20,
-    "minutes": 2,
-    "seconds": 0
+    "days": 4,
+    "hours": 18,
+    "minutes": 45,
+    "seconds": 20
   },
   "images": [
-    "https://cdn.pixabay.com/photo/2017/08/07/16/32/oil-2608361_1280.jpg",
-    "https://pngimg.com/d/olive_oil_PNG33.png",
-    "https://pngimg.com/d/sunflower_oil_PNG24.png"
+    "/images/products/sweet_almond_oil.jpg",
+    "/images/products/extra_virgin_olive_oil.jpg",
+    "/images/products/sarson_mustard_oil.jpg"
   ],
-  "link": "https://example.com/shop",
-  "image": "https://www.smart-tbk.com/wp-content/uploads/2023/12/Cooking-Oil-101-Thumbnail.jpg"
+  "link": "/products",
+  "image": "/images/products/sweet_almond_oil.jpg"
 }

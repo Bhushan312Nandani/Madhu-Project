@@ -1,35 +1,35 @@
 {
-  "title": "New Arrivals – Madhu Shudh Oils",
-  "label": "Featured Oils",
+  "title": "New Arrivals – MadhuShud Pure Oils",
+  "label": "Featured Range",
   "products": {
     "bigLeft": {
-      "image": "https://tiimg.tistatic.com/fp/1/006/457/100-pure-groundnut-oil-573.jpg",
-      "alt": "Ayurvedic oil bottles",
-      "title": "Cold Pressed Mustard Oil",
-      "desc": "Pure, natural & chemical-free. Perfect for healthy cooking.",
-      "link": "#"
+      "image": "/images/products/sarson_mustard_oil.jpg",
+      "alt": "MadhuShud Cold Pressed Sarson Oil",
+      "title": "Cold-Pressed Pure Sarson Oil",
+      "desc": "100% Traditional wood-pressed mustard oil with pungent aroma & natural pungency.",
+      "link": "/products?category=mustard"
     },
     "topRight": {
-      "image": "https://chiltanpure.pk/cdn/shop/files/mustard-oil-boost-hair-growth-moisturizes-skin-amp-prevents-premature-greying-716970.jpg?v=1721638267",
-      "alt": "Coconut oil bottle",
-      "title": "Virgin Coconut Oil",
-      "desc": "Rich in nutrients, ideal for cooking & skincare.",
-      "link": "#"
+      "image": "/images/products/virgin_coconut_oil.jpg",
+      "alt": "MadhuShud 100% Virgin Coconut Oil",
+      "title": "100% Virgin Coconut Oil",
+      "desc": "Crystal clear raw unrefined oil for radiant skin, strong hair, and ketogenic diet.",
+      "link": "/products?category=coconut"
     },
     "bottomRight": [
       {
-        "image": "https://mamasjan.com/cdn/shop/files/BlackSeedsOil.png?v=1748863214",
-        "alt": "Sesame oil bottle",
-        "title": "Sesame Oil",
-        "desc": "Boosts immunity and improves digestion.",
-        "link": "#"
+        "image": "/images/products/black_sesame_oil.jpg",
+        "alt": "MadhuShud Pure Black Sesame Oil",
+        "title": "Pure Black Sesame Oil",
+        "desc": "Rich in antioxidants, sesamin, and zinc for vitality.",
+        "link": "/products?category=sesame"
       },
       {
-        "image": "https://istanbul-care.com/media/ic/files/2025/11/Custard-Oil-for-Hair-Growth-Benefits-and-Best-Uses.webp",
-        "alt": "Olive oil bottle",
+        "image": "/images/products/extra_virgin_olive_oil.jpg",
+        "alt": "MadhuShud Extra Virgin Olive Oil",
         "title": "Extra Virgin Olive Oil",
-        "desc": "Premium oil for salad dressings & healthy cooking.",
-        "link": "#"
+        "desc": "Premium cold extraction for healthy heart & salad dressings.",
+        "link": "/products?category=olive"
       }
     ]
   },
@@ -37,17 +37,17 @@
     {
       "icon": "fas fa-truck",
       "title": "FREE & FAST DELIVERY",
-      "desc": "On all bulk & retail orders"
+      "desc": "Free delivery in Pakistan over Rs. 1,500 & Express DHL worldwide"
     },
     {
-      "icon": "fas fa-headset",
-      "title": "CUSTOMER SUPPORT",
-      "desc": "Friendly 24/7 customer assistance"
+      "icon": "fab fa-whatsapp",
+      "title": "WHATSAPP BULK ORDERS",
+      "desc": "Direct wholesale & international quotes on +92 333 2529504"
     },
     {
-      "icon": "fas fa-seedling",
-      "title": "PURE & NATURAL",
-      "desc": "100% chemical-free cold-pressed oils"
+      "icon": "fas fa-certificate",
+      "title": "100% PURE & TESTED",
+      "desc": "Wood-pressed, zero chemical additives or preservatives"
     }
   ]
 }

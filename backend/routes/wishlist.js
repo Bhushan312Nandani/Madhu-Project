@@ -93,7 +93,25 @@ router.post("/", (req, res) => {
   }
 });
 
-// DELETE by productId (not internal numeric id) — frontend uses product id
+// DELETE by productId (supporting both /:productId and /:userId/:productId)
+router.delete("/:userId/:productId", (req, res) => {
+  try {
+    const userId = String(req.params.userId);
+    const productId = String(req.params.productId);
+
+    const data = readWishlist();
+    if (!Array.isArray(data[userId])) data[userId] = [];
+
+    data[userId] = data[userId].filter(i => String(i.productId) !== productId);
+    writeWishlist(data);
+
+    return res.json({ message: "Removed from wishlist", wishlist: data[userId] });
+  } catch (err) {
+    console.error("DELETE /api/wishlist/:userId/:productId error:", err);
+    return res.status(500).json({ message: "Server error removing from wishlist" });
+  }
+});
+
 router.delete("/:productId", (req, res) => {
   try {
     const userId = getUserId(req);
@@ -102,14 +120,8 @@ router.delete("/:productId", (req, res) => {
     const data = readWishlist();
     if (!Array.isArray(data[userId])) data[userId] = [];
 
-    const beforeLen = data[userId].length;
     data[userId] = data[userId].filter(i => String(i.productId) !== productId);
     writeWishlist(data);
-
-    if (data[userId].length === beforeLen) {
-      // nothing removed
-      return res.status(404).json({ message: "Item not found", wishlist: data[userId] });
-    }
 
     return res.json({ message: "Removed from wishlist", wishlist: data[userId] });
   } catch (err) {

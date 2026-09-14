@@ -1,7 +1,8 @@
 // src/utils/api.js
 import axios from "axios";
 
-const API_BASE = "http://localhost:5000/api";
+export const RAW_API = (process.env.REACT_APP_API_URL || "http://localhost:5000").replace(/\/api\/?$/, "");
+export const API_BASE = `${RAW_API}/api`;
 
 /**
  * Returns a safe user id from localStorage.
