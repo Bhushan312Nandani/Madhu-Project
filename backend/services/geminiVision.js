@@ -15,7 +15,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
  * @returns {Promise<ProductInfo>}
  */
 export async function generateProductInfo(imageBuffer, mimeType = "image/jpeg", hint = "") {
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
 
   const prompt = `
 You are an expert product copywriter for an online oil shop called MadhuShud.
