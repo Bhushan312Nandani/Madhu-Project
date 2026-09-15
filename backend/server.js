@@ -33,6 +33,8 @@ import adminRouter from "./routes/admin.js";
 import reviewsRouter from "./routes/reviews.js";
 import couponRouter from "./routes/coupon.js";
 import currencyRouter from "./routes/currency.js";
+import whatsappRouter from "./routes/whatsapp.js";
+import prisma from "./lib/prisma.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -158,6 +160,9 @@ app.use("/api/currency", currencyRouter);
 // ─── Admin Routes ─────────────────────────────────────────────────────────────
 app.use("/api/admin", adminRouter);
 
+// ─── WhatsApp Admin Bot ───────────────────────────────────────────────────────
+app.use("/api/whatsapp", whatsappRouter);
+
 // ─── Health Check ─────────────────────────────────────────────────────────────
 app.get("/api/health", (req, res) => {
   const uptime = process.uptime();
@@ -165,7 +170,8 @@ app.get("/api/health", (req, res) => {
   res.json({
     status: "OK",
     message: "MadhuShud Oil Shop API is running",
-    version: "3.0.0",
+    version: "4.0.0",
+    features: ["WhatsApp Admin Bot", "Gemini AI Descriptions", "S3 CDN", "PostgreSQL"],
     environment: process.env.NODE_ENV || "development",
     uptime: `${Math.floor(uptime / 60)}m ${Math.floor(uptime % 60)}s`,
     timestamp: new Date().toISOString(),
@@ -258,6 +264,11 @@ const startServer = async () => {
   });
   process.on("unhandledRejection", (reason) => {
     console.error("💥 Unhandled Rejection:", reason);
+  });
+
+  // Graceful Prisma disconnect
+  process.on("beforeExit", async () => {
+    await prisma.$disconnect();
   });
 };
 

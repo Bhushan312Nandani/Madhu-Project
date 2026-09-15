@@ -1,0 +1,305 @@
+// MadhuShud — Prisma Schema (PostgreSQL)
+// Replaces all Mongoose models
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── User ─────────────────────────────────────────────────────────────────────
+model User {
+  id             String    @id @default(cuid())
+  name           String    @db.VarChar(60)
+  email          String    @unique @db.VarChar(255)
+  phone          String    @db.VarChar(20)
+  password       String
+  role           Role      @default(USER)
+  isActive       Boolean   @default(true)
+  isVerified     Boolean   @default(false)
+  avatar         String?
+  addresses      Json      @default("[]")   // Array of address objects
+  refreshToken   String?
+  lastLogin      DateTime?
+  loginAttempts  Int       @default(0)
+  lockUntil      DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  // Relations
+  orders         Order[]
+  reviews        Review[]
+  cart           Cart?
+  wishlist       Wishlist?
+  contacts       Contact[]
+
+  @@index([email])
+  @@index([role])
+  @@map("users")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+// ─── Product ──────────────────────────────────────────────────────────────────
+model Product {
+  id            String    @id @default(cuid())
+  name          String    @db.VarChar(200)
+  slug          String    @unique @db.VarChar(220)
+  description   String    @db.Text
+  shortDesc     String?   @db.VarChar(500)
+  price         Decimal   @db.Decimal(10, 2)
+  salePrice     Decimal?  @db.Decimal(10, 2)
+  stock         Int       @default(0)
+  category      String    @db.VarChar(100)
+  subCategory   String?   @db.VarChar(100)
+  brand         String    @default("MadhuShud") @db.VarChar(100)
+  images        Json      @default("[]")   // Array of S3 URLs
+  mainImage     String?   // Primary image S3 URL
+  benefits      Json      @default("[]")   // Array of strings
+  tags          Json      @default("[]")   // Array of strings
+  weight        String?   @db.VarChar(50)  // e.g. "250ml", "500g"
+  unit          String?   @db.VarChar(20)
+  isActive      Boolean   @default(true)
+  isFeatured    Boolean   @default(false)
+  isFlashSale   Boolean   @default(false)
+  flashSaleEnd  DateTime?
+  flashDiscount Int?      // percentage
+  rating        Decimal   @default(0) @db.Decimal(3, 2)
+  reviewCount   Int       @default(0)
+  soldCount     Int       @default(0)
+  sku           String?   @unique @db.VarChar(100)
+  // AI-generated metadata
+  aiDescription String?   @db.Text
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  orderItems    OrderItem[]
+  reviews       Review[]
+  cartItems     CartItem[]
+  wishlistItems WishlistItem[]
+
+  @@index([slug])
+  @@index([category])
+  @@index([isActive, isFeatured])
+  @@index([isFlashSale])
+  @@map("products")
+}
+
+// ─── Order ────────────────────────────────────────────────────────────────────
+model Order {
+  id              String       @id @default(cuid())
+  orderNumber     String       @unique @default(cuid())
+  userId          String
+  user            User         @relation(fields: [userId], references: [id])
+  status          OrderStatus  @default(PENDING)
+  paymentStatus   PaymentStatus @default(PENDING)
+  paymentMethod   String       @default("COD") @db.VarChar(50)
+  
+  // Pricing
+  subtotal        Decimal      @db.Decimal(10, 2)
+  shippingCost    Decimal      @default(0) @db.Decimal(10, 2)
+  discount        Decimal      @default(0) @db.Decimal(10, 2)
+  tax             Decimal      @default(0) @db.Decimal(10, 2)
+  total           Decimal      @db.Decimal(10, 2)
+  
+  // Shipping address snapshot
+  shippingAddress Json
+  
+  // Coupon
+  couponCode      String?
+  couponDiscount  Decimal?     @db.Decimal(10, 2)
+  
+  // Currency
+  currency        String       @default("PKR") @db.VarChar(10)
+  
+  notes           String?      @db.Text
+  trackingNumber  String?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+
+  // Relations
+  items           OrderItem[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("orders")
+}
+
+model OrderItem {
+  id          String   @id @default(cuid())
+  orderId     String
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId   String
+  product     Product  @relation(fields: [productId], references: [id])
+  name        String   // snapshot at time of purchase
+  image       String?
+  price       Decimal  @db.Decimal(10, 2)
+  quantity    Int
+  total       Decimal  @db.Decimal(10, 2)
+
+  @@map("order_items")
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+// ─── Review ───────────────────────────────────────────────────────────────────
+model Review {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id])
+  rating     Int      // 1-5
+  title      String?  @db.VarChar(200)
+  body       String?  @db.Text
+  isVerified Boolean  @default(false) // verified purchase
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([userId, productId]) // one review per product per user
+  @@index([productId])
+  @@map("reviews")
+}
+
+// ─── Cart ─────────────────────────────────────────────────────────────────────
+model Cart {
+  id        String     @id @default(cuid())
+  userId    String     @unique
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items     CartItem[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@map("carts")
+}
+
+model CartItem {
+  id        String   @id @default(cuid())
+  cartId    String
+  cart      Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now())
+
+  @@unique([cartId, productId])
+  @@map("cart_items")
+}
+
+// ─── Wishlist ─────────────────────────────────────────────────────────────────
+model Wishlist {
+  id        String         @id @default(cuid())
+  userId    String         @unique
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items     WishlistItem[]
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  @@map("wishlists")
+}
+
+model WishlistItem {
+  id         String   @id @default(cuid())
+  wishlistId String
+  wishlist   Wishlist @relation(fields: [wishlistId], references: [id], onDelete: Cascade)
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id])
+  createdAt  DateTime @default(now())
+
+  @@unique([wishlistId, productId])
+  @@map("wishlist_items")
+}
+
+// ─── Coupon ───────────────────────────────────────────────────────────────────
+model Coupon {
+  id             String       @id @default(cuid())
+  code           String       @unique @db.VarChar(50)
+  type           CouponType
+  value          Decimal      @db.Decimal(10, 2) // % or flat amount
+  minOrderAmount Decimal?     @db.Decimal(10, 2)
+  maxDiscount    Decimal?     @db.Decimal(10, 2) // cap for % coupons
+  usageLimit     Int?
+  usedCount      Int          @default(0)
+  isActive       Boolean      @default(true)
+  expiresAt      DateTime?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@index([code])
+  @@map("coupons")
+}
+
+enum CouponType {
+  PERCENTAGE
+  FLAT
+}
+
+// ─── Contact ──────────────────────────────────────────────────────────────────
+model Contact {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  name      String   @db.VarChar(100)
+  email     String   @db.VarChar(255)
+  phone     String?  @db.VarChar(20)
+  subject   String   @db.VarChar(200)
+  message   String   @db.Text
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([isRead])
+  @@map("contacts")
+}
+
+// ─── Banner ───────────────────────────────────────────────────────────────────
+model Banner {
+  id        String   @id @default(cuid())
+  title     String   @db.VarChar(200)
+  subtitle  String?  @db.VarChar(300)
+  image     String   // S3 URL
+  link      String?
+  isActive  Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("banners")
+}
+
+// ─── WhatsApp Bot Log ─────────────────────────────────────────────────────────
+model WhatsappLog {
+  id         String   @id @default(cuid())
+  from       String   @db.VarChar(20)
+  message    String   @db.Text
+  action     String?  @db.VarChar(100)
+  success    Boolean  @default(true)
+  response   String?  @db.Text
+  createdAt  DateTime @default(now())
+
+  @@index([from])
+  @@index([createdAt])
+  @@map("whatsapp_logs")
+}
