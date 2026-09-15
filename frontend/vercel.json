@@ -1,7 +1,14 @@
 {
   "outputDirectory": "build",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/api/:path*",
+      "destination": "http://13.233.225.152/api/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {
