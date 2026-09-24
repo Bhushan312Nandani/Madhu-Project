@@ -76,75 +76,111 @@ router.get("/:orderId", optionalAuth, apiLimiter, async (req, res) => {
 // ─── POST new order ───────────────────────────────────────────────────────────
 router.post("/", optionalAuth, validateOrder, async (req, res) => {
   try {
-    const { billing, items, paymentMethod, total, couponCode, discount = 0, notes } = req.body;
+    const { billing, items, paymentMethod, couponCode, discount = 0, notes } = req.body;
+    const total = Number(req.body.total ?? req.body.totalPKR ?? req.body.subtotalPKR ?? 0);
     const userId = req.user?.id || req.headers["x-user-id"];
     const orderNumber = "ORD-" + uuidv4().split("-")[0].toUpperCase() + "-" + Date.now().toString(36).toUpperCase();
-    const subtotal = items.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0);
+    const subtotal = items.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity || 1), 0);
 
-    if (dbMode === "postgres" && userId && userId !== "guest") {
-      // Verify user exists
-      const user = await prisma.user.findUnique({ where: { id: userId } }).catch(() => null);
-
-      // Use a transaction for atomicity (ACID!)
-      const order = await prisma.$transaction(async (tx) => {
-        const newOrder = await tx.order.create({
-          data: {
-            orderNumber,
-            userId: user ? userId : undefined,
-            shippingAddress: billing,
-            paymentMethod: paymentMethod || "COD",
-            subtotal: Math.round(subtotal * 100) / 100,
-            discount: Number(discount) || 0,
-            couponCode: couponCode || null,
-            total: Number(total),
-            currency: "PKR",
-            notes: notes || "",
-            status: "PENDING",
-            items: {
-              create: items.map(item => ({
-                productId: item.productId || item.id,
-                name: item.name,
-                image: item.image || item.images?.[0] || null,
-                price: Number(item.price),
-                quantity: Number(item.quantity),
-                total: Number(item.price) * Number(item.quantity),
-              })),
-            },
-          },
-          include: { items: true },
-        });
-
-        // Decrement stock & increment soldCount
-        for (const item of items) {
-          const pid = item.productId || item.id;
-          if (pid) {
-            await tx.product.update({
-              where: { id: pid },
+    if (dbMode === "postgres") {
+      try {
+        let user = null;
+        if (userId && userId !== "guest") {
+          user = await prisma.user.findUnique({ where: { id: userId } }).catch(() => null);
+        }
+        if (!user) {
+          user = await prisma.user.findUnique({ where: { email: "guest@madhushud.com" } }).catch(() => null);
+          if (!user) {
+            user = await prisma.user.create({
               data: {
-                stock: { decrement: Number(item.quantity) },
-                soldCount: { increment: Number(item.quantity) },
-              },
-            }).catch(() => {});
+                email: "guest@madhushud.com",
+                name: "Guest Shopper",
+                phone: "03000000000",
+                password: "GUEST_ACCOUNT_LOCK",
+                role: "USER",
+              }
+            }).catch(() => null);
           }
         }
 
-        // Handle coupon usage
-        if (couponCode) {
-          await tx.coupon.updateMany({
-            where: { code: couponCode.toUpperCase(), isActive: true },
-            data: { usedCount: { increment: 1 } },
-          }).catch(() => {});
+        if (user) {
+          const order = await prisma.$transaction(async (tx) => {
+            const newOrder = await tx.order.create({
+              data: {
+                orderNumber,
+                userId: user.id,
+                shippingAddress: billing,
+                paymentMethod: paymentMethod || "COD",
+                subtotal: Math.round(subtotal * 100) / 100,
+                discount: Number(discount) || 0,
+                couponCode: couponCode || null,
+                total: Number(total),
+                currency: "PKR",
+                notes: notes || "",
+                status: "PENDING",
+                items: {
+                  create: items.map(item => ({
+                    productId: item.productId || item.id,
+                    name: item.name,
+                    image: item.image || item.images?.[0] || null,
+                    price: Number(item.price),
+                    quantity: Number(item.quantity || 1),
+                    total: Number(item.price) * Number(item.quantity || 1),
+                  })),
+                },
+              },
+              include: { items: true },
+            });
+
+            // Decrement stock & increment soldCount
+            for (const item of items) {
+              const pid = item.productId || item.id;
+              if (pid) {
+                await tx.product.update({
+                  where: { id: pid },
+                  data: {
+                    stock: { decrement: Number(item.quantity || 1) },
+                    soldCount: { increment: Number(item.quantity || 1) },
+                  },
+                }).catch(() => {});
+              }
+            }
+
+            // Handle coupon usage
+            if (couponCode) {
+              await tx.coupon.updateMany({
+                where: { code: couponCode.toUpperCase(), isActive: true },
+                data: { usedCount: { increment: 1 } },
+              }).catch(() => {});
+            }
+
+            return newOrder;
+          });
+
+          // Also backup to orders.json
+          try {
+            const orders = readFile(ordersFile);
+            orders.push({
+              id: orders.length + 1,
+              orderId: orderNumber,
+              userId: userId || "guest",
+              billing, items, paymentMethod: paymentMethod || "COD",
+              subtotal, total: Number(total), status: "pending",
+              createdAt: new Date().toISOString()
+            });
+            writeFile(ordersFile, orders);
+          } catch {}
+
+          console.log(`[ORDER] ✅ ${order.orderNumber} — PKR ${total} (${user.name})`);
+          return res.status(201).json({
+            message: "Order placed successfully!",
+            orderId: order.orderNumber,
+            order: normalizeOrder(order),
+          });
         }
-
-        return newOrder;
-      });
-
-      console.log(`[ORDER] ✅ ${order.orderNumber} — PKR ${total} by user ${userId}`);
-      return res.status(201).json({
-        message: "Order placed successfully!",
-        orderId: order.orderNumber,
-        order: normalizeOrder(order),
-      });
+      } catch (pgErr) {
+        console.warn("[ORDER] Postgres write failed, using JSON fallback:", pgErr.message);
+      }
     }
 
     // JSON fallback

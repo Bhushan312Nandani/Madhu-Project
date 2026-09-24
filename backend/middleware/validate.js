@@ -67,13 +67,24 @@ export const validateLogin = [
 // ─── Order Validation Rules ───────────────────────────────────────────────────
 
 export const validateOrder = [
+  (req, res, next) => {
+    if (req.body) {
+      if (req.body.total === undefined && req.body.totalPKR !== undefined) {
+        req.body.total = req.body.totalPKR;
+      }
+      if (req.body.total === undefined && req.body.subtotalPKR !== undefined) {
+        req.body.total = req.body.subtotalPKR;
+      }
+    }
+    next();
+  },
   body("billing.firstName").trim().notEmpty().withMessage("First name is required").escape(),
   body("billing.streetAddress").trim().notEmpty().withMessage("Address is required").escape(),
   body("billing.city").trim().notEmpty().withMessage("City is required").escape(),
   body("billing.phone")
     .trim()
     .notEmpty().withMessage("Phone is required")
-    .matches(/^[+\d\s\-()]{7,20}$/).withMessage("Invalid phone number"),
+    .isLength({ min: 6, max: 30 }).withMessage("Invalid phone number"),
   body("billing.email")
     .trim()
     .notEmpty().withMessage("Billing email is required")
@@ -89,14 +100,12 @@ export const validateOrder = [
 
 export const validateContact = [
   body("name").trim().notEmpty().withMessage("Name is required").escape(),
-  body("email")
-    .trim()
-    .notEmpty().withMessage("Email is required")
-    .isEmail().withMessage("Invalid email"),
+  body("phone").trim().notEmpty().withMessage("Phone is required"),
+  body("email").optional({ checkFalsy: true }).isEmail().withMessage("Invalid email"),
   body("message")
     .trim()
     .notEmpty().withMessage("Message is required")
-    .isLength({ min: 10, max: 1000 }).withMessage("Message must be 10–1000 characters")
+    .isLength({ min: 6, max: 2000 }).withMessage("Message must be 6–2000 characters")
     .escape(),
   handleValidationErrors,
 ];
